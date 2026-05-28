@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Xelmi is a bright, colorful creative digital studio building modern web experiences, branding systems, and startup-ready products." />
+  <title>Xelmi | Bright Digital Experiences</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f8fbff;
+      --surface: rgba(255, 255, 255, 0.7);
+      --surface-strong: rgba(255, 255, 255, 0.88);
+      --text: #16304a;
+      --muted: #58738d;
+      --line: rgba(86, 123, 164, 0.18);
+      --shadow: 0 24px 80px rgba(86, 123, 164, 0.16);
+      --shadow-soft: 0 16px 40px rgba(86, 123, 164, 0.12);
+      --blue: #60a5fa;
+      --purple: #a78bfa;
+      --mint: #34d399;
+      --pink: #fb7185;
+      --yellow: #fbbf24;
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(96, 165, 250, 0.28), transparent 32%),
+        radial-gradient(circle at 85% 10%, rgba(251, 113, 133, 0.22), transparent 26%),
+        radial-gradient(circle at 15% 85%, rgba(52, 211, 153, 0.18), transparent 28%),
+        linear-gradient(180deg, #fefeff 0%, #f5f8ff 55%, #eef5ff 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      filter: blur(44px);
+      opacity: 0.45;
+      pointer-events: none;
+      z-index: 0;
+      animation: drift 18s ease-in-out infinite;
+    }
+
+    body::before {
+      top: -160px;
+      right: -140px;
+      background: radial-gradient(circle, rgba(167, 139, 250, 0.42), rgba(167, 139, 250, 0));
+    }
+
+    body::after {
+      bottom: -170px;
+      left: -130px;
+      background: radial-gradient(circle, rgba(96, 165, 250, 0.45), rgba(96, 165, 250, 0));
+      animation-duration: 22s;
+      animation-direction: reverse;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--container));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 96px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      box-shadow: 0 10px 30px rgba(94, 123, 166, 0.12);
+      color: #47617e;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      backdrop-filter: blur(18px);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--mint), var(--blue));
+      box-shadow: 0 0 18px rgba(96, 165, 250, 0.35);
+    }
+
+    h1,
+    h2,
+    h3,
+    .brand {
+      font-family: "Poppins", sans-serif;
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 6vw, 6.4rem);
+      line-height: 0.95;
+      max-width: 11ch;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 3vw, 3.4rem);
+      line-height: 1.02;
+      max-width: 12ch;
+    }
+
+    h3 {
+      font-size: 1.18rem;
+      line-height: 1.15;
+    }
+
+    p {
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 255, 255, 0.56);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.66);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 84px;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #13314d;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 25%),
+        linear-gradient(135deg, var(--blue), var(--purple) 34%, var(--pink) 67%, var(--yellow));
+      box-shadow: 0 18px 30px rgba(96, 165, 250, 0.22);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      color: #4c6782;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 3px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.18), rgba(167, 139, 250, 0.18));
+      border: 1px solid rgba(96, 165, 250, 0.18);
+      box-shadow: 0 12px 28px rgba(94, 123, 166, 0.12);
+      font-weight: 700;
+      color: #204462;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 56px 0 96px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 36px;
+      align-items: center;
+      min-height: calc(100vh - 112px);
+    }
+
+    .hero-copy {
+      position: relative;
+      animation: rise 1s ease both;
+    }
+
+    .hero-copy p {
+      font-size: 1.1rem;
+      max-width: 60ch;
+      margin-top: 24px;
+    }
+
+    .hero-copy .accent {
+      background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 28px rgba(94, 123, 166, 0.15);
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--purple) 58%, var(--pink));
+      box-shadow: 0 18px 34px rgba(96, 165, 250, 0.28);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.76);
+      color: #214361;
+      border-color: rgba(96, 165, 250, 0.16);
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(96, 165, 250, 0.14);
+      color: #40607f;
+      font-weight: 600;
+      box-shadow: 0 12px 20px rgba(94, 123, 166, 0.08);
+    }
+
+    .hero-pill span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--mint), var(--blue));
+      box-shadow: 0 0 14px rgba(52, 211, 153, 0.35);
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 700px;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .hero-art .orbit,
+    .hero-art .spark,
+    .hero-art .card {
+      position: absolute;
+      border-radius: 28px;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+    }
+
+    .orbit {
+      inset: 70px 0 72px 45px;
+      background:
+        radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 16%),
+        linear-gradient(145deg, rgba(96, 165, 250, 0.24), rgba(167, 139, 250, 0.22), rgba(251, 113, 133, 0.18), rgba(52, 211, 153, 0.2));
+    }
+
+    .orbit::before,
+    .orbit::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .orbit::before {
+      inset: 42px 34px;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.35), transparent 68%);
+      box-shadow: inset 0 0 24px rgba(255, 255, 255, 0.2);
+    }
+
+    .orbit::after {
+      inset: 118px 104px;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.42), transparent 72%);
+    }
+
+    .spark {
+      width: 152px;
+      height: 152px;
+      right: 0;
+      top: 24px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.2) 24%, rgba(96, 165, 250, 0.16) 62%, rgba(255, 255, 255, 0) 100%);
+      box-shadow: 0 0 60px rgba(251, 191, 36, 0.22);
+      animation: pulse 5s ease-in-out infinite;
+    }
+
+    .hero-card {
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.84);
+    }
+
+    .card-top {
+      top: 66px;
+      left: 0;
+      width: 290px;
+      animation: drift 10s ease-in-out infinite;
+    }
+
+    .card-mid {
+      bottom: 58px;
+      right: 18px;
+      width: 250px;
+      animation: drift 12s ease-in-out infinite reverse;
+    }
+
+    .mini-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #5a7190;
+      margin-bottom: 16px;
+    }
+
+    .mini-label::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), var(--yellow));
+    }
+
+    .mini-metric {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .metric-value {
+      font-size: 2.4rem;
+      font-family: "Poppins", sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      background: linear-gradient(135deg, #1e5cf6, #905cf7, #f66f8e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .metric-copy {
+      color: var(--muted);
+      font-size: 0.92rem;
+      max-width: 16ch;
+      text-align: right;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.12), rgba(167, 139, 250, 0.12));
+      color: #46617c;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .timeline-item strong {
+      color: #204361;
+    }
+
+    .section-heading {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+
+    .section-heading p {
+      max-width: 62ch;
+      font-size: 1.04rem;
+    }
+
+    .service-grid,
+    .benefit-grid,
+    .stats-grid,
+    .showcase-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .service-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .service-card,
+    .benefit-card,
+    .stat-card,
+    .showcase-card,
+    .process-card,
+    .contact-card {
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(18px);
+    }
+
+    .service-card {
+      padding: 24px;
+      min-height: 176px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .service-card:hover,
+    .benefit-card:hover,
+    .showcase-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 50px rgba(94, 123, 166, 0.18);
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -28px -28px auto;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 68%);
+      opacity: 0.65;
+    }
+
+    .service-icon,
+    .benefit-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 800;
+      box-shadow: 0 16px 28px rgba(94, 123, 166, 0.18);
+    }
+
+    .icon-blue { background: linear-gradient(135deg, #60a5fa, #4f83f8); }
+    .icon-purple { background: linear-gradient(135deg, #a78bfa, #8b5cf6); }
+    .icon-pink { background: linear-gradient(135deg, #fb7185, #f43f5e); }
+    .icon-mint { background: linear-gradient(135deg, #34d399, #10b981); }
+    .icon-yellow { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+    .icon-sky { background: linear-gradient(135deg, #7dd3fc, #60a5fa); }
+
+    .service-card p,
+    .benefit-card p,
+    .showcase-card p,
+    .process-card p,
+    .contact-card p {
+      margin-top: 10px;
+    }
+
+    .service-footer {
+      position: relative;
+      margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #31506e;
+    }
+
+    .service-footer::after {
+      content: "→";
+      transition: transform 0.25s ease;
+    }
+
+    .service-card:hover .service-footer::after {
+      transform: translateX(4px);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .process-card {
+      padding: 28px;
+    }
+
+    .process-steps {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 14px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(96, 165, 250, 0.12);
+    }
+
+    .step-number {
+      width: 58px;
+      height: 58px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-family: "Poppins", sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--blue), var(--purple), var(--pink));
+      box-shadow: 0 16px 28px rgba(96, 165, 250, 0.24);
+    }
+
+    .step small {
+      display: block;
+      color: #5b748f;
+      margin-top: 4px;
+      line-height: 1.55;
+    }
+
+    .process-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .process-visual {
+      padding: 22px;
+      overflow: hidden;
+      position: relative;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 24%),
+        linear-gradient(135deg, rgba(96, 165, 250, 0.18), rgba(167, 139, 250, 0.18), rgba(251, 113, 133, 0.16), rgba(52, 211, 153, 0.18));
+    }
+
+    .process-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(1px);
+      opacity: 0.92;
+      animation: drift 11s ease-in-out infinite;
+    }
+
+    .orb-1 {
+      width: 120px;
+      height: 120px;
+      top: 24px;
+      right: 24px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 26%), linear-gradient(135deg, rgba(251, 113, 133, 0.75), rgba(251, 191, 36, 0.78));
+    }
+
+    .orb-2 {
+      width: 88px;
+      height: 88px;
+      bottom: 118px;
+      left: 26px;
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.88), rgba(167, 139, 250, 0.8));
+      animation-delay: -3s;
+    }
+
+    .orb-3 {
+      width: 66px;
+      height: 66px;
+      bottom: 30px;
+      right: 42px;
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.88), rgba(96, 165, 250, 0.74));
+      animation-delay: -5s;
+    }
+
+    .workflow-card {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 20px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      box-shadow: 0 18px 34px rgba(94, 123, 166, 0.12);
+    }
+
+    .workflow-bars {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .bar {
+      height: 14px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(96, 165, 250, 0.18), rgba(167, 139, 250, 0.18), rgba(251, 113, 133, 0.18));
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink), var(--yellow));
+    }
+
+    .bar:nth-child(1) span { width: 88%; }
+    .bar:nth-child(2) span { width: 74%; }
+    .bar:nth-child(3) span { width: 96%; }
+
+    .showcase-grid {
+      grid-template-columns: 1.1fr 0.9fr 0.9fr;
+    }
+
+    .showcase-card {
+      padding: 20px;
+      min-height: 280px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .showcase-preview {
+      height: 170px;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.62));
+    }
+
+    .showcase-preview::before,
+    .showcase-preview::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(1px);
+    }
+
+    .showcase-preview::before {
+      width: 150px;
+      height: 150px;
+      top: -30px;
+      right: -20px;
+      background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 30%), linear-gradient(135deg, rgba(96, 165, 250, 0.7), rgba(167, 139, 250, 0.64));
+    }
+
+    .showcase-preview::after {
+      width: 210px;
+      height: 210px;
+      bottom: -80px;
+      left: -70px;
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.54), rgba(251, 113, 133, 0.44));
+    }
+
+    .preview-lines {
+      position: absolute;
+      inset: 18px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .preview-lines span {
+      display: block;
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.76);
+      box-shadow: 0 8px 18px rgba(94, 123, 166, 0.08);
+    }
+
+    .preview-lines span:nth-child(1) { width: 62%; }
+    .preview-lines span:nth-child(2) { width: 86%; }
+    .preview-lines span:nth-child(3) { width: 45%; }
+    .preview-lines span:nth-child(4) { width: 74%; }
+    .preview-lines span:nth-child(5) { width: 36%; }
+
+    .preview-dash {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .preview-dash i {
+      flex: 1;
+      height: 16px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(96, 165, 250, 0.32), rgba(167, 139, 250, 0.32), rgba(251, 113, 133, 0.32));
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .stat-card {
+      padding: 28px 24px;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::after {
+      content: "";
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 62%);
+      opacity: 0.8;
+    }
+
+    .stat-number {
+      font-family: "Poppins", sans-serif;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #1f5cf8, #8e5cf7, #f66f8e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .benefit-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .benefit-card {
+      padding: 24px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .contact-points {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .contact-point {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(96, 165, 250, 0.1);
+      border-radius: 18px;
+      color: #4d6884;
+      font-weight: 600;
+    }
+
+    .contact-point span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--mint), var(--blue));
+      box-shadow: 0 0 18px rgba(52, 211, 153, 0.24);
+      flex: none;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-card {
+      padding: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #33516f;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(96, 165, 250, 0.18);
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--text);
+      border-radius: 18px;
+      padding: 15px 16px;
+      font: inherit;
+      outline: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(96, 165, 250, 0.55);
+      box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.12);
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .cta-band {
+      position: relative;
+      overflow: hidden;
+      border-radius: 40px;
+      padding: 34px;
+      background:
+        radial-gradient(circle at 18% 26%, rgba(255, 255, 255, 0.32), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.18), transparent 24%),
+        linear-gradient(120deg, rgba(96, 165, 250, 0.95), rgba(167, 139, 250, 0.92), rgba(251, 113, 133, 0.92), rgba(251, 191, 36, 0.88));
+      box-shadow: 0 28px 70px rgba(96, 165, 250, 0.24);
+      color: white;
+    }
+
+    .cta-band p {
+      color: rgba(255, 255, 255, 0.86);
+      max-width: 58ch;
+    }
+
+    .cta-band .btn-secondary {
+      background: rgba(255, 255, 255, 0.18);
+      color: white;
+      border-color: rgba(255, 255, 255, 0.26);
+    }
+
+    .cta-bubbles span {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      filter: blur(0.2px);
+      animation: drift 14s ease-in-out infinite;
+    }
+
+    .cta-bubbles span:nth-child(1) {
+      width: 130px;
+      height: 130px;
+      top: -18px;
+      right: 10%;
+    }
+
+    .cta-bubbles span:nth-child(2) {
+      width: 74px;
+      height: 74px;
+      bottom: 24px;
+      left: 8%;
+      animation-delay: -3s;
+    }
+
+    .cta-bubbles span:nth-child(3) {
+      width: 48px;
+      height: 48px;
+      top: 44%;
+      right: 24px;
+      animation-delay: -5s;
+    }
+
+    footer {
+      padding: 20px 0 44px;
+    }
+
+    .footer-shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 22px 0 0;
+      border-top: 1px solid rgba(96, 165, 250, 0.14);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: #52708b;
+      font-weight: 600;
+    }
+
+    .footer-note {
+      color: #67829b;
+      font-size: 0.95rem;
+    }
+
+    .reveal {
+      animation: rise 0.9s ease both;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+
+    @keyframes drift {
+      0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+      50% { transform: translate3d(14px, -18px, 0) rotate(5deg); }
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.07); opacity: 1; }
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .process-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-art {
+        min-height: 620px;
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .service-grid,
+      .showcase-grid,
+      .benefit-grid,
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 780px) {
+      .section {
+        padding: 72px 0;
+      }
+
+      .nav {
+        min-height: 72px;
+        align-items: flex-start;
+        padding: 12px 0;
+      }
+
+      .nav-links {
+        gap: 12px 18px;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      h1 {
+        max-width: 100%;
+      }
+
+      .hero {
+        padding-top: 32px;
+      }
+
+      .hero-grid {
+        min-height: auto;
+      }
+
+      .hero-art {
+        min-height: 540px;
+        transform: scale(0.98);
+      }
+
+      .service-grid,
+      .showcase-grid,
+      .benefit-grid,
+      .stats-grid,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .card-top,
+      .card-mid {
+        width: auto;
+      }
+
+      .cta-band {
+        padding: 28px 22px;
+        border-radius: 28px;
+      }
+
+      .footer-shell {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(calc(100% - 24px), var(--container));
+      }
+
+      .nav {
+        gap: 14px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        font-size: 0.9rem;
+      }
+
+      .hero-copy p,
+      .section-heading p {
+        font-size: 0.98rem;
+      }
+
+      .hero-art {
+        min-height: 470px;
+      }
+
+      .orbit {
+        inset: 86px 0 86px 0;
+      }
+
+      .card-top {
+        top: 16px;
+        left: 12px;
+        right: 12px;
+      }
+
+      .card-mid {
+        left: 12px;
+        right: 12px;
+        bottom: 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="#top" aria-label="Xelmi home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          Xelmi
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#showcase">Showcase</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="nav-cta" href="#contact">Start a Project</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow reveal">Aurora Creative Light Interface</span>
+            <h1 class="reveal delay-1">Bright Ideas. Beautiful <span class="accent">Digital Experiences.</span></h1>
+            <p class="reveal delay-2">Xelmi is a colorful creative digital studio shaping modern websites, expressive brand systems, and startup-ready products that feel energetic, premium, and unmistakably fresh.</p>
+            <div class="hero-actions reveal delay-3">
+              <a class="btn btn-primary" href="#contact">Get Started</a>
+              <a class="btn btn-secondary" href="#showcase">Explore Studio</a>
+            </div>
+            <div class="hero-points reveal delay-4">
+              <div class="hero-pill"><span></span>UI/UX with personality</div>
+              <div class="hero-pill"><span></span>Fast creative execution</div>
+              <div class="hero-pill"><span></span>Bright premium visuals</div>
+            </div>
+          </div>
+
+          <div class="hero-art" aria-hidden="true">
+            <div class="orbit"></div>
+            <div class="spark"></div>
+
+            <article class="hero-card card-top">
+              <div class="mini-label">Creative pulse</div>
+              <h3>Color-first interface systems</h3>
+              <p>High-energy layouts built for modern brands that want to stand out without losing polish.</p>
+              <div class="mini-metric">
+                <div class="metric-value">97%</div>
+                <div class="metric-copy">delight across every screen</div>
+              </div>
+            </article>
+
+            <article class="hero-card card-mid">
+              <div class="mini-label">Studio rhythm</div>
+              <div class="timeline">
+                <div class="timeline-item"><strong>Idea</strong><span>spark</span></div>
+                <div class="timeline-item"><strong>Design</strong><span>shape</span></div>
+                <div class="timeline-item"><strong>Launch</strong><span>shine</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow reveal">Services</span>
+            <h2 class="reveal delay-1">A bright toolkit for creative digital growth.</h2>
+            <p class="reveal delay-2">Xelmi blends strategy, design, and development into colorful digital systems that help brands feel modern, expressive, and easy to remember.</p>
+          </div>
+          <div class="service-grid">
+            <article class="service-card reveal delay-1">
+              <div class="service-icon icon-blue">01</div>
+              <h3>UI/UX Design</h3>
+              <p>Elegant experiences that balance clarity, delight, and premium interaction depth.</p>
+              <div class="service-footer">See interface systems</div>
+            </article>
+            <article class="service-card reveal delay-2">
+              <div class="service-icon icon-purple">02</div>
+              <h3>Web Development</h3>
+              <p>Fast, responsive builds that translate the visual concept into a polished site experience.</p>
+              <div class="service-footer">Build your digital home</div>
+            </article>
+            <article class="service-card reveal delay-3">
+              <div class="service-icon icon-pink">03</div>
+              <h3>Branding Identity</h3>
+              <p>Distinctive logo, color, and motion direction designed for memorable digital presence.</p>
+              <div class="service-footer">Shape a stronger identity</div>
+            </article>
+            <article class="service-card reveal delay-4">
+              <div class="service-icon icon-mint">04</div>
+              <h3>Creative Strategy</h3>
+              <p>Positioning and story architecture for brands that want a sharper point of view.</p>
+              <div class="service-footer">Clarify the message</div>
+            </article>
+            <article class="service-card reveal delay-5">
+              <div class="service-icon icon-yellow">05</div>
+              <h3>Digital Products</h3>
+              <p>Launch-ready product pages, dashboards, and experiences with a joyful premium tone.</p>
+              <div class="service-footer">Craft product experiences</div>
+            </article>
+            <article class="service-card reveal delay-6">
+              <div class="service-icon icon-sky">06</div>
+              <h3>Startup Design Systems</h3>
+              <p>Reusable visual foundations that keep scaling teams moving fast without losing coherence.</p>
+              <div class="service-footer">Systemize the brand</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="process">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow reveal">Creative Process</span>
+            <h2 class="reveal delay-1">A flow that turns energy into launch-ready work.</h2>
+            <p class="reveal delay-2">Each stage is designed to keep ideas moving quickly while preserving the visual quality and strategic clarity that premium digital brands need.</p>
+          </div>
+
+          <div class="process-grid">
+            <article class="process-card reveal delay-1">
+              <div class="process-steps">
+                <div class="step">
+                  <div class="step-number">1</div>
+                  <div>
+                    <h3>Idea</h3>
+                    <small>Capture the spark, define the direction, and choose the visual energy.</small>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-number">2</div>
+                  <div>
+                    <h3>Design</h3>
+                    <small>Create a colorful interface language with depth, rhythm, and personality.</small>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-number">3</div>
+                  <div>
+                    <h3>Build</h3>
+                    <small>Translate the design into a responsive and accessible experience.</small>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-number">4</div>
+                  <div>
+                    <h3>Refine</h3>
+                    <small>Polish motion, spacing, and clarity until the page feels effortless.</small>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-number">5</div>
+                  <div>
+                    <h3>Launch</h3>
+                    <small>Publish with confidence and make the brand feel alive from day one.</small>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <div class="process-side">
+              <article class="process-card process-visual reveal delay-2">
+                <div class="process-orb orb-1"></div>
+                <div class="process-orb orb-2"></div>
+                <div class="process-orb orb-3"></div>
+                <div class="workflow-card">
+                  <div class="mini-label">Studio momentum</div>
+                  <h3>Bright systems with a soft glow.</h3>
+                  <p>Warm gradients, clean hierarchy, and glass cards create a premium but playful atmosphere.</p>
+                  <div class="workflow-bars" aria-hidden="true">
+                    <div class="bar"><span></span></div>
+                    <div class="bar"><span></span></div>
+                    <div class="bar"><span></span></div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="showcase">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow reveal">Studio Showcase</span>
+            <h2 class="reveal delay-1">A glimpse into colorful systems and product worlds.</h2>
+            <p class="reveal delay-2">These showcase cards suggest how Xelmi frames project previews, design systems, and digital mockups with bright overlays and soft depth.</p>
+          </div>
+          <div class="showcase-grid">
+            <article class="showcase-card reveal delay-1">
+              <div class="showcase-preview">
+                <div class="preview-lines">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="preview-dash">
+                  <i></i><i></i><i></i>
+                </div>
+              </div>
+              <h3 style="margin-top: 18px;">Product landing preview</h3>
+              <p>Bold spacing, vivid gradients, and a clear conversion path.</p>
+            </article>
+            <article class="showcase-card reveal delay-2">
+              <div class="showcase-preview" style="background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.58));">
+                <div class="preview-lines" style="transform: translateY(10px);">
+                  <span style="width: 52%;"></span>
+                  <span style="width: 72%;"></span>
+                  <span style="width: 60%;"></span>
+                  <span style="width: 86%;"></span>
+                  <span style="width: 44%;"></span>
+                </div>
+                <div class="preview-dash">
+                  <i style="background: linear-gradient(90deg, rgba(52,211,153,0.28), rgba(96,165,250,0.3));"></i>
+                  <i style="background: linear-gradient(90deg, rgba(167,139,250,0.28), rgba(251,113,133,0.3));"></i>
+                </div>
+              </div>
+              <h3 style="margin-top: 18px;">Design system panel</h3>
+              <p>Reusable tokens and components with bright, friendly structure.</p>
+            </article>
+            <article class="showcase-card reveal delay-3">
+              <div class="showcase-preview" style="background: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(255,255,255,0.54));">
+                <div class="preview-lines" style="gap: 10px;">
+                  <span style="width: 58%;"></span>
+                  <span style="width: 46%;"></span>
+                  <span style="width: 79%;"></span>
+                  <span style="width: 68%;"></span>
+                  <span style="width: 88%;"></span>
+                </div>
+                <div class="preview-dash">
+                  <i style="background: linear-gradient(90deg, rgba(251,191,36,0.28), rgba(251,113,133,0.3));"></i>
+                  <i style="background: linear-gradient(90deg, rgba(96,165,250,0.28), rgba(52,211,153,0.3));"></i>
+                </div>
+              </div>
+              <h3 style="margin-top: 18px;">Creative mockup scene</h3>
+              <p>A warm visual story that keeps the brand feel premium and playful.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="stats-grid">
+            <article class="stat-card reveal delay-1">
+              <div class="stat-number">200+</div>
+              <h3>Projects</h3>
+              <p>Creative work shipped across brands, campaigns, and digital products.</p>
+            </article>
+            <article class="stat-card reveal delay-2">
+              <div class="stat-number">80+</div>
+              <h3>Brands Built</h3>
+              <p>Identity-led systems that make businesses feel clearer and more magnetic.</p>
+            </article>
+            <article class="stat-card reveal delay-3">
+              <div class="stat-number">10M+</div>
+              <h3>Impressions</h3>
+              <p>Visual experiences crafted to capture attention and sustain interest.</p>
+            </article>
+            <article class="stat-card reveal delay-4">
+              <div class="stat-number">100%</div>
+              <h3>Creative Focus</h3>
+              <p>A studio mindset built around vivid execution and refined detail.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="why">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow reveal">Why Xelmi</span>
+            <h2 class="reveal delay-1">Creative innovation with a bright, confident point of view.</h2>
+            <p class="reveal delay-2">The experience is designed to feel playful but premium, with every component reinforcing a modern brand that is fast, expressive, and visually memorable.</p>
+          </div>
+          <div class="benefit-grid">
+            <article class="benefit-card reveal delay-1">
+              <div class="benefit-icon icon-blue">✦</div>
+              <h3>Creative innovation</h3>
+              <p>Fresh ideas shaped into a visually distinct digital identity.</p>
+            </article>
+            <article class="benefit-card reveal delay-2">
+              <div class="benefit-icon icon-purple">▣</div>
+              <h3>Modern UI thinking</h3>
+              <p>Clean structure, expressive color, and intuitive content flow.</p>
+            </article>
+            <article class="benefit-card reveal delay-3">
+              <div class="benefit-icon icon-pink">↗</div>
+              <h3>Fast execution</h3>
+              <p>Quick delivery without sacrificing polish or brand personality.</p>
+            </article>
+            <article class="benefit-card reveal delay-4">
+              <div class="benefit-icon icon-mint">◌</div>
+              <h3>Strong visual identity</h3>
+              <p>A bright system that stays recognizable across screens and formats.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <article class="cta-band reveal">
+            <div class="cta-bubbles" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div style="position: relative; z-index: 1; max-width: 760px;">
+              <span class="eyebrow" style="background: rgba(255,255,255,0.16); color: white; border-color: rgba(255,255,255,0.18);">Call to Action</span>
+              <h2 style="max-width: 12ch; margin-top: 18px;">Let’s Build Something Beautiful.</h2>
+              <p style="margin-top: 16px;">Bring your next digital idea to Xelmi and turn it into a bright, premium experience that feels alive from the first interaction.</p>
+              <div class="hero-actions" style="margin-top: 24px;">
+                <a class="btn btn-primary" href="#contact" style="background: rgba(255,255,255,0.98); color: #1d4470;">Start Now</a>
+                <a class="btn btn-secondary" href="#contact">Contact Us</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow reveal">Contact</span>
+            <h2 class="reveal delay-1">Start a project with the Xelmi studio.</h2>
+            <p class="reveal delay-2">Send a quick brief and the team can turn the rough idea into a colorful digital concept that feels polished, modern, and easy to love.</p>
+          </div>
+
+          <div class="contact-grid">
+            <article class="contact-card reveal delay-1">
+              <h3>What you can expect</h3>
+              <p>Fast communication, a clear creative direction, and a beautiful launch-ready outcome.</p>
+              <div class="contact-points">
+                <div class="contact-point"><span></span>Friendly strategy discovery</div>
+                <div class="contact-point"><span></span>Colorful visual direction</div>
+                <div class="contact-point"><span></span>Responsive, polished delivery</div>
+              </div>
+            </article>
+
+            <article class="contact-card reveal delay-2">
+              <form>
+                <div class="form-row">
+                  <label>
+                    Name
+                    <input type="text" name="name" placeholder="Your name" />
+                  </label>
+                  <label>
+                    Email
+                    <input type="email" name="email" placeholder="you@company.com" />
+                  </label>
+                </div>
+                <label>
+                  Project Idea
+                  <input type="text" name="idea" placeholder="Website, brand, product, campaign..." />
+                </label>
+                <label>
+                  Message
+                  <textarea name="message" placeholder="Tell us what you want to create and what feeling it should have."></textarea>
+                </label>
+                <div class="form-actions">
+                  <a class="btn btn-primary" href="mailto:hello@xelmi.site">Send Inquiry</a>
+                  <a class="btn btn-secondary" href="#top">Back to Top</a>
+                </div>
+              </form>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-shell">
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true"></span>
+          Xelmi
+        </a>
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#showcase">Showcase</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-note">Bright digital experiences for xelmi.site</div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
